@@ -13,9 +13,12 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :show]
 
-  resources :users, only: [:create, :new]
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
-  resources :sessions, only: [:create, :new, :destroy]
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
 
   namespace :admin do
     root to: 'dashboard#show'
