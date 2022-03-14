@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
     if user.authenticate(password)
       return user
     end
+    
     return nil
   end
 

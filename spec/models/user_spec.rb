@@ -92,16 +92,31 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'user authentication is unsuccessful' do
+    context 'user authentication is unsuccessful on wrong password' do
       it 'returns nil' do
         @user.save
         user = User.authenticate_with_credentials(@user.email, 'wrong')
         expect(user).to be(nil)
       end
     end
+      
+    context 'user authentication is unsuccessful on wrong email' do
+      it 'returns nil' do
+        @user2 = User.new
+        @user2.first_name = 'test'
+        @user2.last_name = 'test'
+        @user2.email = 'testing@test'
+        @user2.password = 'testing'
+        @user2.password_confirmation = 'testing'
 
-    context 'user authentication is successful' do
-      it 'returns user object' do
+        @user.save
+        user = User.authenticate_with_credentials(@user2.email, @user.password)
+        expect(user).to be(nil)
+      end
+    end
+
+    context 'user authentication is unsuccessful on non-existent email' do
+      it 'returns nil' do
         @user.save
         user = User.authenticate_with_credentials('wrong@test', @user.password)
         expect(user).to be(nil)
