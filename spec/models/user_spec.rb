@@ -40,13 +40,29 @@ RSpec.describe User, type: :model do
         @user2 = User.new
         @user2.first_name = 'test'
         @user2.last_name = 'test'
-        @user2.email = 'test@test'
+        @user2.email = 'test@TEST' # testing for downcasing on email validation
         @user2.password = 'test'
         @user2.password_confirmation = 'test'
 
         @user.save
         @user2.save
         expect(@user2.errors.full_messages).to include('Email has already been taken')
+      end
+    end
+
+    context 'add user without password' do
+      it 'throws error referring to password' do
+        @user.password = nil
+        @user.save
+        expect(@user.errors.full_messages).to include('Password can\'t be blank')
+      end
+    end
+
+    context 'add user without password confirmation' do
+      it 'throws error referring to password confirmation' do
+        @user.password_confirmation = nil
+        @user.save
+        expect(@user.errors.full_messages).to include('Password confirmation can\'t be blank')
       end
     end
   end
