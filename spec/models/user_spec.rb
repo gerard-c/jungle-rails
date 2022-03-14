@@ -34,5 +34,20 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Email can\'t be blank')
       end
     end
+
+    context 'add user without unique email' do
+      it 'throws error referring to unique email' do
+        @user2 = User.new
+        @user2.first_name = 'test'
+        @user2.last_name = 'test'
+        @user2.email = 'test@test'
+        @user2.password = 'test'
+        @user2.password_confirmation = 'test'
+
+        @user.save
+        @user2.save
+        expect(@user2.errors.full_messages).to include('Email has already been taken')
+      end
+    end
   end
 end
