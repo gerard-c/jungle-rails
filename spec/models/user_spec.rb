@@ -26,5 +26,13 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Last name can\'t be blank')
       end
     end
+
+    context 'add user without email' do
+      it 'throws error referring to email' do
+        @user.email = nil
+        @user.save
+        expect(@user.errors.full_messages).to include('Email can\'t be blank')
+      end
+    end
   end
 end

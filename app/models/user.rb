@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   def downcase_email
-    self.email.downcase!
+    self.email.downcase! if email.present?
   end
 
 end
