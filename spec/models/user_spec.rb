@@ -65,5 +65,13 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Password confirmation can\'t be blank')
       end
     end
+
+    context 'add user without matching password, password confirmation' do
+      it 'throws error referring to password' do
+        @user.password_confirmation = 'tset'
+        @user.save
+        expect(@user.errors.full_messages).to include('Password confirmation doesn\'t match Password')
+      end
+    end
   end
 end
