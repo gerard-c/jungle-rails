@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'Validations' do
-    before(:each) do
-      @user = User.new
-      @user.first_name = 'test'
-      @user.last_name = 'test'
-      @user.email = 'test@test'
-      @user.password = 'test'
-      @user.password_confirmation = 'test'
-    end
-    
+  before(:each) do
+    @user = User.new
+    @user.first_name = 'test'
+    @user.last_name = 'test'
+    @user.email = 'test@test'
+    @user.password = 'test'
+    @user.password_confirmation = 'test'
+  end
+
+  describe 'Validations' do  
     context 'add user without first name' do
       it 'throws error referring to first name' do
         @user.first_name = nil
@@ -79,6 +79,16 @@ RSpec.describe User, type: :model do
         @user.password = 'tes'
         @user.save
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 4 characters)')
+      end
+    end
+  end
+
+  describe '.authenticate_with_credentials' do
+    context 'user authentication is successful' do
+      it 'returns user object' do
+        @user.save
+        user = User.authenticate_with_credentials(@user.email, @user.password)
+        expect(user).to be_instance_of(User)
       end
     end
   end
