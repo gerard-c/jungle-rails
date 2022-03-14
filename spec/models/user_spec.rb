@@ -73,5 +73,13 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Password confirmation doesn\'t match Password')
       end
     end
+
+    context 'add user with short password' do
+      it 'throws error referring to password minimum length' do
+        @user.password = 'tes'
+        @user.save
+        expect(@user.errors.full_messages).to include('Password is too short (minimum is 4 characters)')
+      end
+    end
   end
 end
