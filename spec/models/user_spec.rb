@@ -130,5 +130,13 @@ RSpec.describe User, type: :model do
         expect(user).to be_instance_of(User)
       end
     end
+
+    context 'user authentication is successful with wrong casing on email' do
+      it 'returns user object' do
+        @user.save
+        user = User.authenticate_with_credentials('TEst@tEsT', @user.password)
+        expect(user).to be_instance_of(User)
+      end
+    end
   end
 end
