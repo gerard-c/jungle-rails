@@ -99,5 +99,13 @@ RSpec.describe User, type: :model do
         expect(user).to be(nil)
       end
     end
+
+    context 'user authentication is successful' do
+      it 'returns user object' do
+        @user.save
+        user = User.authenticate_with_credentials('wrong@test', @user.password)
+        expect(user).to be(nil)
+      end
+    end
   end
 end
