@@ -13,4 +13,13 @@ class User < ActiveRecord::Base
     self.email.downcase! if email.present?
   end
 
+  def authenticate_with_credentials(email, password)
+    user = self.find_by_email
+
+    if user.authenticate(password)
+      return user
+    end
+    return nil
+  end
+
 end
