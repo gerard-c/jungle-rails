@@ -10,5 +10,13 @@ RSpec.describe User, type: :model do
       @user.password = 'test'
       @user.password_confirmation = 'test'
     end
+    
+    context 'add user without first name' do
+      it 'throws error referring to first name' do
+        @user.first_name = nil
+        @user.save
+        expect(@user.errors.full_messages).to include('First name can\'t be blank')
+      end
+    end
   end
 end
