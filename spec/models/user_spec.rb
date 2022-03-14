@@ -91,5 +91,13 @@ RSpec.describe User, type: :model do
         expect(user).to be_instance_of(User)
       end
     end
+
+    context 'user authentication is unsuccessful' do
+      it 'returns nil' do
+        @user.save
+        user = User.authenticate_with_credentials(@user.email, 'wrong')
+        expect(user).to be(nil)
+      end
+    end
   end
 end
