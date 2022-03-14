@@ -84,7 +84,7 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-    context 'user authentication is successful' do
+    context 'user authentication is successful with correct email, password' do
       it 'returns user object' do
         @user.save
         user = User.authenticate_with_credentials(@user.email, @user.password)
@@ -118,8 +118,16 @@ RSpec.describe User, type: :model do
     context 'user authentication is unsuccessful on non-existent email' do
       it 'returns nil' do
         @user.save
-        user = User.authenticate_with_credentials('wrong@test', @user.password)
+        user = User.authenticate_with_credentials('no_existent@test', @user.password)
         expect(user).to be(nil)
+      end
+    end
+
+    context 'user authentication is successful with trailing spaces on email' do
+      it 'returns user object' do
+        @user.save
+        user = User.authenticate_with_credentials('  ' + @user.email + '  ', @user.password)
+        expect(user).to be_instance_of(User)
       end
     end
   end
