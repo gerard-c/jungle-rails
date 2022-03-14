@@ -18,5 +18,13 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('First name can\'t be blank')
       end
     end
+
+    context 'add user without last name' do
+      it 'throws error referring to last name' do
+        @user.last_name = nil
+        @user.save
+        expect(@user.errors.full_messages).to include('Last name can\'t be blank')
+      end
+    end
   end
 end
