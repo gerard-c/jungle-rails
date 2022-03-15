@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "AddToCarts", type: :feature do
+RSpec.feature "Visitor's cart item count updates in top nav", type: :feature, js: true do
+
   # SETUP
   before :each do
     @category = Category.create! name: 'Apparel'
@@ -16,9 +17,13 @@ RSpec.feature "AddToCarts", type: :feature do
     end
   end
 
-  scenario 'They see the product details' do
+  scenario 'The item count in the top nav cart will update from 0 to 1' do
     # ACT
     visit root_path
+    first('.product').click_button('Add')
+
+    # VERIFY
+    expect(page).to have_content('My Cart (1)')
 
   end
 end
