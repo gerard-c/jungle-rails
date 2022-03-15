@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Visitor's cart item count updates in top nav", type: :feature, js: true do
+RSpec.feature "Visitor's adds an item to their cart", type: :feature, js: true do
 
   # SETUP
   before :each do
