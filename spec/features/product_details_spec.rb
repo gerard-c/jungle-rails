@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Visitor navigates to specific product page", type: :feature, js: true do
 
+  # SETUP
   before :each do
     @category = Category.create! name: 'Apparel'
   
@@ -17,6 +18,12 @@ RSpec.feature "Visitor navigates to specific product page", type: :feature, js: 
   end
 
   scenario 'They see the product details' do
-    
+    # ACT
+    visit root_path 
+    first('.product').click_link('Details')
+
+    # VERIFY
+    expect(page).to have_css '.product-detail'
+
   end
 end
