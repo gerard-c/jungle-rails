@@ -2,12 +2,39 @@
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
+This project was largely complete from the onset and was intended to simulate the experience of being introduced to a new codebase in a largely unfamiliar language, as if we were starting a new job as a junior developer. Prior to the introduction of this project we had been working with Ruby for only a few days and had no experience with Rails.
+
+The first portion of the assignment involved the introduction of several features and fixes:
+
+* standardizing currency format across the app
+* replacing content of cart page with a message when the cart is empty
+* adding "SOLD OUT!" badge to products with 0 stock
+* adding an order details table to be shown after checkout
+* adding basic authentication (username, password) in order to access admin pages
+* adding product and category counts on the admin homepage
+* adding a new "about" page, accessible from the top nav
+* adding a form allowing admins to create new categories
+* adding forms allowing users to create accounts and log in using sessions
+
+After implementing these basic features, we were also tasked with writing RSpec tests to confirm that they worked. This also involved adding additional validation requirements to the user model. On top of the basic RSpec tests used to confirm that validation and authentication worked correctly, we also wrote more detailed tests using capybara to simulate user input and confirm that pages were linking to eachother and rendering their elements correctly.
+
+Unsurprisingly, there was a bit of a steep learning curve to this project. However, as the days went on and I became more familliar with the codebase and Ruby on Rails things started to fall into place. Though it was only a very small taste, I feel slightly more prepared for the many challenges I will face once I begin my career as a developer.
+
+![Product with a "SOLD OUT!" badge]()
+
+![Order details page]()
+
+![Empty cart message]()
+
+![Account creation page]()
+
+
+
+
 ## Additional Steps for Apple M1 Machines
 
 1. Make sure that you are runnning Ruby 2.6.6 (`ruby -v`)
-1. Install ImageMagick `brew install imagemagick imagemagick@6 --build-from-source`
-2. Remove Gemfile.lock
-3. Replace Gemfile with version provided [here](https://gist.githubusercontent.com/FrancisBourgouin/831795ae12c4704687a0c2496d91a727/raw/ce8e2104f725f43e56650d404169c7b11c33a5c5/Gemfile)
+2. Install ImageMagick `brew install imagemagick imagemagick@6 --build-from-source`
 
 ## Setup
 
