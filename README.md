@@ -20,13 +20,13 @@ After implementing these basic features, we were also tasked with writing RSpec 
 
 Unsurprisingly, there was a bit of a steep learning curve to this project. However, as the days went on and I became more familliar with the codebase and Ruby on Rails things started to fall into place. Though it was only a very small taste, I feel slightly more prepared for the many challenges I will face once I begin my career as a developer.
 
-![Product with a "SOLD OUT!" badge]()
+![Product with a "SOLD OUT!" badge](https://github.com/gerard-c/jungle-rails/blob/master/docs/sold-out-badge.png?raw=true)
 
-![Order details page]()
+![Order details page](https://github.com/gerard-c/jungle-rails/blob/master/docs/order-details.png?raw=true)
 
-![Empty cart message]()
+![Empty cart message](https://github.com/gerard-c/jungle-rails/blob/master/docs/empty-cart.png?raw=true)
 
-![Account creation page]()
+![Account creation page](https://github.com/gerard-c/jungle-rails/blob/master/docs/create-account.png?raw=true)
 
 
 
